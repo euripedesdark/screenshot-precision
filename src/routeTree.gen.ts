@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConexaoRouteImport } from './routes/conexao'
+import { Route as DnsRouteImport } from './routes/dns'
+import { Route as FirewallRouteImport } from './routes/firewall'
+import { Route as GruposRouteImport } from './routes/grupos'
+import { Route as ProvisionarRouteImport } from './routes/provisionar'
+import { Route as UsuariosRouteImport } from './routes/usuarios'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConexaoRoute = ConexaoRouteImport.update({
+  id: '/conexao',
+  path: '/conexao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DnsRoute = DnsRouteImport.update({
+  id: '/dns',
+  path: '/dns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FirewallRoute = FirewallRouteImport.update({
+  id: '/firewall',
+  path: '/firewall',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GruposRoute = GruposRouteImport.update({
+  id: '/grupos',
+  path: '/grupos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProvisionarRoute = ProvisionarRouteImport.update({
+  id: '/provisionar',
+  path: '/provisionar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsuariosRoute = UsuariosRouteImport.update({
+  id: '/usuarios',
+  path: '/usuarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/conexao': typeof ConexaoRoute
+  '/dns': typeof DnsRoute
+  '/firewall': typeof FirewallRoute
+  '/grupos': typeof GruposRoute
+  '/provisionar': typeof ProvisionarRoute
+  '/usuarios': typeof UsuariosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/conexao': typeof ConexaoRoute
+  '/dns': typeof DnsRoute
+  '/firewall': typeof FirewallRoute
+  '/grupos': typeof GruposRoute
+  '/provisionar': typeof ProvisionarRoute
+  '/usuarios': typeof UsuariosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/conexao': typeof ConexaoRoute
+  '/dns': typeof DnsRoute
+  '/firewall': typeof FirewallRoute
+  '/grupos': typeof GruposRoute
+  '/provisionar': typeof ProvisionarRoute
+  '/usuarios': typeof UsuariosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/conexao'
+    | '/dns'
+    | '/firewall'
+    | '/grupos'
+    | '/provisionar'
+    | '/usuarios'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/conexao'
+    | '/dns'
+    | '/firewall'
+    | '/grupos'
+    | '/provisionar'
+    | '/usuarios'
+  id:
+    | '__root__'
+    | '/'
+    | '/conexao'
+    | '/dns'
+    | '/firewall'
+    | '/grupos'
+    | '/provisionar'
+    | '/usuarios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConexaoRoute: typeof ConexaoRoute
+  DnsRoute: typeof DnsRoute
+  FirewallRoute: typeof FirewallRoute
+  GruposRoute: typeof GruposRoute
+  ProvisionarRoute: typeof ProvisionarRoute
+  UsuariosRoute: typeof UsuariosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conexao': {
+      id: '/conexao'
+      path: '/conexao'
+      fullPath: '/conexao'
+      preLoaderRoute: typeof ConexaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dns': {
+      id: '/dns'
+      path: '/dns'
+      fullPath: '/dns'
+      preLoaderRoute: typeof DnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/firewall': {
+      id: '/firewall'
+      path: '/firewall'
+      fullPath: '/firewall'
+      preLoaderRoute: typeof FirewallRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grupos': {
+      id: '/grupos'
+      path: '/grupos'
+      fullPath: '/grupos'
+      preLoaderRoute: typeof GruposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/provisionar': {
+      id: '/provisionar'
+      path: '/provisionar'
+      fullPath: '/provisionar'
+      preLoaderRoute: typeof ProvisionarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/usuarios': {
+      id: '/usuarios'
+      path: '/usuarios'
+      fullPath: '/usuarios'
+      preLoaderRoute: typeof UsuariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConexaoRoute: ConexaoRoute,
+  DnsRoute: DnsRoute,
+  FirewallRoute: FirewallRoute,
+  GruposRoute: GruposRoute,
+  ProvisionarRoute: ProvisionarRoute,
+  UsuariosRoute: UsuariosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
