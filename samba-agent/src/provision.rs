@@ -61,7 +61,7 @@ pub fn provision(r: &ProvisionReq) -> Vec<CmdResult> {
     step(run("systemctl", a(&["enable", "--now", "samba"]), d), &mut out);
     step(run("samba-tool", a(&["domain", "level", "show"]), d), &mut out);
     let realm_l = r.realm.to_lowercase();
-    step(run("host", vec!["-t".into(), "SRV".into(), format!("_ldap._tcp.{realm_l}"), "127.0.0.1".into()]), d), &mut out);
+    step(run("host", vec!["-t".into(), "SRV".into(), format!("_ldap._tcp.{realm_l}"), "127.0.0.1".into()], d), &mut out);
     out
 }
 
