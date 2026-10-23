@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- samba-agent/ is a standalone Rust crate (axum) the web UI calls over HTTP; firewall code must only add rules (never -F/-X/-Z/-D/-P), enforced by tests. Why: user forbids clearing existing rules.

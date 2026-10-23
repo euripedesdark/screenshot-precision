@@ -1,3 +1,3 @@
 # Roadmap
-- [ ] Agente Rust (samba-agent)
-- [ ] GUI web seguindo padrão do astral-firewall
+- [x] Agente Rust (samba-agent)
+- [x] GUI web (padrão astral-firewall não acessível; estilo console escuro)
