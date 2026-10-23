@@ -14,7 +14,7 @@ export async function api<T = any>(path: string, init?: { method?: string; body?
   const res = await fetch(c.url.replace(/\/$/, "") + path, {
     method: init?.method ?? "GET",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${c.token}` },
-    body: init?.body ? JSON.stringify(init.body) : undefined,
+    body: init?.body ? JSON.stringify(init.body) : null,
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
